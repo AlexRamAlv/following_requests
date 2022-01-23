@@ -63,4 +63,4 @@ class Request(db.Model):
 
     # String object representation
     def __repr__(self) -> str:
-        return "<Request %r>" %self.no_request
+        return "<Request %r>" %self.request_number

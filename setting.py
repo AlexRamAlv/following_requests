@@ -11,7 +11,7 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 #main class configuration
 class Config:
-    SECRET_KEY = os.environ.get("SECRET_KEY") or "a hard passowrd to crack or guess"
+    SECRET_KEY = os.environ.get("SECRET_KEY") or "a hard key to crack or guess"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     @staticmethod

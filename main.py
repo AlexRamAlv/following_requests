@@ -19,5 +19,6 @@ def variables_on_shell():
     return {
         "Administrator": Administrator, 
         "Requester": Requester,
-        "Request": Request
+        "Request": Request,
+        "db": db
     }

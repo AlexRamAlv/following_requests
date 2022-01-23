@@ -4,7 +4,6 @@
     the function recived a string as a configuration name passing to the dict imported
     the function also return a Flask instance.
 """
-from ensurepip import bootstrap
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
