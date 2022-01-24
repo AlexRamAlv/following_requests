@@ -1,10 +1,10 @@
 from app import db
+from flask import request
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
 class Administrator(UserMixin, db.Model):
-    # table name and its fields
+    # table name and its fieldsdb
     __tablename__ = "administrators"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
@@ -32,16 +32,25 @@ class Administrator(UserMixin, db.Model):
 
 
 class Requester(db.Model):
+    # constructor
+    def __init__(self) -> None:
+        super().__init__()
+        self.username = f"{self.name}_{self.last_name}"
+
     # table name and its fields
     __tablename__ = "requesters"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
     last_name = db.Column(db.String(64))
     username = db.Column(db.String(128), index=True)
+    gravatar_hash = db.Column(db.String(256))
     work_as = db.Column(db.String(64))
-    create_by = db.Column(db.Integer, db.ForeignKey("administrators.id"))
+    admin_id = db.Column(db.Integer, db.ForeignKey("administrators.id"))
     creation_date = db.Column(db.DateTime)
     requests = db.relationship("Request", backref="requester")
+
+    def gravatar(self):
+        pass
 
     # String object representation
     def __repr__(self) -> str:
@@ -59,7 +68,7 @@ class Request(db.Model):
     recived_date = db.Column(db.DateTime)
     comments = db.Column(db.Text)
     comments_update = db.Column(db.DateTime)
-    created_by_in_AX365 = db.Column(db.Integer, db.ForeignKey("requesters.id"))
+    requester_id = db.Column(db.Integer, db.ForeignKey("requesters.id"))
 
     # String object representation
     def __repr__(self) -> str:

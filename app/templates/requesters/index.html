@@ -5,49 +5,9 @@
 {% block page_content %}
 
     <div class="card-container">
-        <div class="requester-card">
-            <img src="https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg" alt="">
-            <div class="user-info">
-                <h2 class="full-name">Alexander Ramirez</h2>
-                <p class="working-as">Comprador de Bienes</p>
-            </div>
-            <button class="btn btn-primary" type="submit">Ver solicitudes</button>
-            <div class="statistics">
-                <section class="statistics-container">
-                    <div style="color: #189d00; font-weight: 800;">25</div><span class="req-recived-icon"></span>
-                </section>
-                <section class="statistics-container">
-                    <div style="color: #ff8d00;font-weight: 800;">32</div><span class="req-partial-icon"></span>
-                </section>
-                <section class="statistics-container">
-                    <div style="color: #ff0000; font-weight: 800;">45</div><span class="req-nonrecived-icon"></span>
-                </section>
-            </div>
-            <div class="actions">
-                <span class="edit-icon"></span>
-                <span class="delete-icon"></span>
-            </div>
-        </div>
-        <div class="requester-card">
-            <img src="https://ep01.epimg.net/elpais/imagenes/2019/10/30/album/1572424649_614672_1572453030_noticia_normal.jpg" alt="">
-
-        </div>
-        <div class="requester-card">
-            <img src="" alt="">
-            
-        </div>
-        <div class="requester-card">
-            <img src="https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg" alt="">
-            
-        </div>
-        <div class="requester-card">
-            <img src="https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg" alt="">
-            
-        </div>
-        <div class="requester-card">
-            <img src="https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg" alt="">
-            
-        </div>
+        {% for r in requesters %}
+        <requester-card img="{{url_for('static', filename='icons/list.svg')}}" full-name="{{r.name | title}} {{r.last_name |title}}" position="{{r.work_as | title}}" recived="43" partial="05" nonrecived="32"></requester-card>
+        {% endfor %}
     </div>
 
 {% endblock %}

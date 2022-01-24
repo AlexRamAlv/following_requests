@@ -1,4 +1,4 @@
-
+/*----------------variables--------------------*/
 :root{
     --primary: #4f2a9c;
     --softviolet: #7E59B3;
@@ -7,10 +7,10 @@
     --softorange: #ca772f;
     --orangedark: #f44336; 
     --softwithe: #fbf9fa;
+    --softgray: #bcbcbc;
 }
-
-*
-{
+/*----------------changing default settings--------------------*/
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -52,8 +52,8 @@
 }
 .menu-icon{
     background-image: url("../icons/list.svg");
-    height: 45px;
-    width: 45px;
+    height: 35px;
+    width: 35px;
     background-size: cover;
     display: inline-block;
     border: solid 1px;
@@ -64,14 +64,12 @@
 }
 
 .requester-card{
-    border-style: none;
-    border-width: 0;
-    border: #1515345c solid 1px;
     height: 278px;
     border-radius: 18px;
     margin: 90px auto;
     width: 280px;
     background-color: var(--softwithe);
+    box-shadow: 0 0 10px 1px rgb(0 0 0 / 25%);
     position: relative;
     display: grid;
     grid-template-rows: 30% 30% 20% 20%;
@@ -86,15 +84,17 @@
     top: -50px;
     left: 85px;
     border: solid white;
-    box-shadow: 4px 3px 14px 3px rgb(0 0 0 / 54%);
+    box-shadow: 0px -3px 10px 2px rgb(0 0 0 / 25%);
 }
 
 .user-info{
     grid-row: 2;
     grid-column: 2;
+    grid-area: 2/2/3/4;
     place-self: center;
     align-self: center;
     text-align: center;
+    line-height: 25px;
 }
 .full-name{
     color: var(--bluedark);
@@ -109,6 +109,7 @@
 .statistics{
     grid-row: 4;
     grid-column: 2;
+    grid-area: 4/2/5/4;
     place-self: center;
     display: flex;
     align-items: end;
@@ -122,9 +123,12 @@
 }
 
 .actions{
-    grid-column: 2;
+    grid-column: 3;
+    grid-area: 1/3/2/5;
     justify-self: end;
-    align-self: center;
+    align-self: end;
+    display: flex;
+    margin-right: 10px;
     
 }
 
@@ -135,7 +139,8 @@
     display: block;
     width: 20px;
     height: 20px;
-    margin: 15px;
+    margin: 8px;
+    cursor: pointer;
 }
 .edit-icon{
     background-image: url("../icons/pencil-square.svg");
@@ -164,13 +169,13 @@
 .btn-primary{
     grid-row: 3;
     grid-column: 2;
+    grid-area: 3/2/4/4;
     color: #fff;
     background-color: var(--primary);
     border-color: var(--primary);
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
     border-radius: 10px;
+    border-style: none;
+    cursor: pointer;
 }
 
 .req-recived-icon,
@@ -243,13 +248,39 @@
     border-radius: 50%;
 }
 
+/*----------------Media Queries--------------------*/
+
+@media (max-width: 373px) {
+    .requester-card {
+        grid-template-columns: 10% 80% 10%;       
+    } 
+    .btn-primary {
+        grid-row: 3;
+        grid-column: 2;
+        grid-area: 3/2/3/3;
+        font-size: 14px;
+    }
+    .user-info{
+        grid-area: 2/2/3/3;
+    }
+    .actions{
+        grid-row: 1;
+        grid-column: 2;
+        display: block;
+        margin: 0;
+    }
+    .edit-icon, .delete-icon {
+        margin: 13px 8px;
+    }
+}
+
 @media (min-width: 374px) {
     .navigation-bar{
         width: 55vw;
     }
     .requester-card {
         width: 340px;
-        grid-template-columns: 10% 80% 10%;        
+        grid-template-columns: 10% 70% 10% 10%;       
     } 
     .requester-card img{
         left: 115px;
@@ -275,20 +306,19 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        border: solid white;
+        border: solid var(--softgray);
         grid-row: 1;
         grid-column: 1;
         place-self: center;
+        margin-top: 10px;
     }
 
     .user-info {
         grid-row: 1;
         grid-column: 2;
-        place-self: center;
-        align-self: center;
+        place-self: end;
+        justify-self: center;
         text-align: center;
-        display: grid;
-        grid-template-rows: repeat(3, 1fr);
     }
 
     .full-name {
@@ -321,6 +351,7 @@
         grid-column: 3;
         display: flex;
         justify-content: space-evenly;
+        align-self: baseline;
         margin-right: 10px;
     }
     .edit-icon, .delete-icon {
