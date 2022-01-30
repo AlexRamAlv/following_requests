@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Inicio de sesion{% endblock %}
+
+{% block page_content %}
+<div class="" style="width: 800px; margin: auto;">
+    {{ wtf.quick_form(form) }} 
+</div>
+
+{% endblock %}

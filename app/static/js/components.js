@@ -4,7 +4,7 @@ class RequesterCard extends HTMLElement{
         
     }
     static get observedAttributes(){
-        return ["img", "full-name", "position", "recived", "partial", "nonrecived"]
+        return ["img", "full-name", "position", "recived", "partial", "nonrecived", "authenticated"]
     }
 
     attributeChangedCallback(tag, _, newVal){
@@ -32,6 +32,15 @@ class RequesterCard extends HTMLElement{
         if (tag === "delete") {
             this.delete = newVal;
         }
+        if (tag === "authenticated") {
+            if (newVal === "True"){
+                this.display = "flex";
+            }else{
+
+                this.display = "none";
+            }
+
+        }
 
     }
 
@@ -44,7 +53,7 @@ class RequesterCard extends HTMLElement{
                     <h2 class="full-name">${this.full_name}</h2>
                     <p class="working-as">${this.position}</p>
                 </div>
-                <button class="btn btn-primary" type="submit">Ver solicitudes</button>
+                <button class="btn btn-outline-primary" type="submit">Ver solicitudes</button>
                 <div class="statistics">
                     <section class="statistics-container">
                         <div style="color: #189d00; font-weight: 800;">${this.recived}</div><span class="req-recived-icon"></span>
@@ -56,10 +65,12 @@ class RequesterCard extends HTMLElement{
                         <div style="color: #ff0000; font-weight: 800;">${this.nonrecived}</div><span class="req-nonrecived-icon"></span>
                     </section>
                 </div>
-                <div class="actions">
+                
+                <div class="actions" style="display:${this.display};">
                     <span class="edit-icon"></span>
                     <span class="delete-icon"></span>
                 </div>
+                
             </div>
         `;
 
