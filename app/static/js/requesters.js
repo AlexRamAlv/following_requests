@@ -7,20 +7,22 @@ const openModal = document.querySelector("#openModal");
 const modalContainer = document.querySelector(".modal-container");
 const closeModal = document.querySelector("#close-modal");
 
-openModal.addEventListener("click", () =>{
-    modalContainer.classList.add("show-modal");
-});
+if (openModal) {
+    openModal.addEventListener("click", () =>{
+        modalContainer.classList.toggle("show-modal");
+    });
+}
 
 closeModal.addEventListener("click", () =>{
-    modalContainer.classList.remove("show-modal");
+    modalContainer.classList.toggle("show-modal");
 });
 
-window.addEventListener("click", (event)=>{
+window.addEventListener("click", function (event){
 
     if (event.target == modalContainer) {
-        modalContainer.classList.remove("show-modal");
+        modalContainer.classList.toggle("show-modal");
     }
-})
+});
 
 
 /* ----------------------------- JQuery codes ----------------------------------*/
@@ -29,7 +31,7 @@ $("requester-card").on("click", ".requester-card .edit-icon", function(){
     var $grandParent = this.parentElement.parentElement
     var $userInfo = $grandParent.children
     var name =  $userInfo[1].children[0].textContent
-    console.log("edit " + name)
+    // console.log("edit " + name)
 });
 
 $("requester-card").on("click", ".requester-card .delete-icon", function(){

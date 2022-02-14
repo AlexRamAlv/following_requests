@@ -53,21 +53,21 @@ class RequesterCard extends HTMLElement{
                     <h2 class="full-name">${this.full_name}</h2>
                     <p class="working-as">${this.position}</p>
                 </div>
-                <button class="btn btn-outline-primary" type="submit">Ver solicitudes</button>
+                <button class="btn btn-info" type="submit">Ver solicitudes</button>
                 <div class="statistics">
                     <section class="statistics-container">
-                        <div style="color: #189d00; font-weight: 800;">${this.recived}</div><span class="req-recived-icon"></span>
+                        <div style="color: #189d00; font-weight: 500; font-size:14px">${this.recived}</div><span class="req-recived-icon"></span>
                     </section>
                     <section class="statistics-container">
-                        <div style="color: #ff8d00;font-weight: 800;">${this.partial}</div><span class="req-partial-icon"></span>
+                        <div style="color: #ff8d00;font-weight: 500; font-size:14px">${this.partial}</div><span class="req-partial-icon"></span>
                     </section>
                     <section class="statistics-container">
-                        <div style="color: #ff0000; font-weight: 800;">${this.nonrecived}</div><span class="req-nonrecived-icon"></span>
+                        <div style="color: #ff0000; font-weight: 500; font-size:14px">${this.nonrecived}</div><span class="req-nonrecived-icon"></span>
                     </section>
                 </div>
                 
                 <div class="actions" style="display:${this.display};">
-                    <span class="edit-icon"></span>
+                    <span id="edit-icon" class="edit-icon"></span>
                     <span class="delete-icon"></span>
                 </div>
                 

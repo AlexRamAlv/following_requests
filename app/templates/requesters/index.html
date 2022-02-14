@@ -4,14 +4,13 @@
 
 {% block page_content %}
     {% if current_user.is_authenticated %}
-    <div class="btn-modal-container" style="text-align: center;">
-        <button class="btn btn-primary" id="openModal"> <span>+</span> Añadir Solicitante</button>
+    <div class="btn-modal-container">
+        <button class="btn btn-primary" id="openModal"> <span class="plus-symbol">+</span> Añadir Solicitante</button>
     </div>
     {% endif %}
     <div class="modal-container">
         <div class="personal-modal">
             <span class="requester-icon"></span><h2>Nuevo Solicitante</h2>
-            <hr>
             <div>
                 <form action="" method="post">
                     <div class="mb-3">
@@ -22,9 +21,9 @@
                         <label for="exampleInputPassword1" class="form-label">Apellido</label>
                         <input type="text" class="form-control" id="exampleInputPassword1" required>
                       </div>
-                      <div class="d-grid gap-2 col-6 mx-auto">
-                          <button type="submit" class="btn btn-primary">Crear</button>
+                      <div class="btn-modal-container">
                           <button type="reset" class="btn btn-secondary" id="close-modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary">Crear</button>
                       </div>
                     </form>
             </div>
@@ -49,3 +48,12 @@
     </div>
 
 {% endblock %}
+
+{% block scripts %}
+{{super()}}
+    <script src="{{url_for('static', filename='js/requesters.js')}}"></script>
+    <script type="module" src="{{url_for('static', filename='js/components.js')}}"></script>
+
+{% endblock%}
+
+
