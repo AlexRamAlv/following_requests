@@ -7,15 +7,15 @@ const openModal = document.querySelector("#openModal");
 const modalContainer = document.querySelector(".modal-container");
 const closeModal = document.querySelector("#close-modal");
 
-if (openModal) {
-    openModal.addEventListener("click", () =>{
-        modalContainer.classList.toggle("show-modal");
-    });
+const btnCloseModal = () =>{
+    modalContainer.classList.toggle("show-modal");
 }
 
-closeModal.addEventListener("click", () =>{
-    modalContainer.classList.toggle("show-modal");
-});
+if (openModal) {
+    openModal.addEventListener("click", btnCloseModal);
+}
+
+closeModal.addEventListener("click", btnCloseModal);
 
 window.addEventListener("click", function (event){
 

@@ -3,10 +3,10 @@
 
 :root{
     --soft-white: #faf7f6;
-    --primary: #3d85ca;
-    --primary-hover: #266096;
-    --secondary: #ab9eaa;
-    --secondary-hover:#827681;
+    --primary: #27b327;
+    --primary-hover: #209520;
+    --secondary: #9797a5;
+    --secondary-hover:#64646c;
     --middle-blue: #85cfe5;
     --info: #b8d0d8;
     --success: #6cb979;
@@ -25,10 +25,6 @@ body{
     position: relative;
 }
 
-.main-container{
-    margin-top: 140px;
-}
-
 .navbar{
     background-color: var(--primary);
     color: var(--soft-white);
@@ -36,7 +32,7 @@ body{
     display: grid;
     grid-template: 50px 120px 30px/ 5fr 1fr;
     box-shadow: 0px 0px 6px 0.5px rgb(0 0 0 / 70%);
-    transition: .5s height;
+    transition: 0.2s height;
     height: 64px;
     position: fixed;
     top: 0;
@@ -66,10 +62,12 @@ body{
 
 .hamburguer{
     place-self: center;
-    height: 24px;
-    width: 25px;
+    height: 34px;
+    width: 34px;
     margin-bottom: 20px;
     cursor: pointer;
+    border: 1px solid #ffffff33;
+    border-radius: 5px;
 }
 
 .hamburguer img {
@@ -78,8 +76,8 @@ body{
 
 .nav-items{
     border-top:transparent;
-    pointer-events: none;
     transition: 0.2s border-top ease-in-out;
+    pointer-events: none;
 }
 
 .show-items{
@@ -92,6 +90,10 @@ body{
 ul li{
     padding: 10px;
     list-style: none
+}
+
+ul li:hover{
+    background-color: var(--primary-hover);
 }
 
 ul li a{
@@ -122,11 +124,23 @@ ul li a:hover{
 }
 
 .login-form{
-    padding: 50px;
-    min-width: 300px;
-    height: 409px;
-    border: 1px solid #80808061;
-    border-radius: 10px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr 300px 1fr;
+    grid-template-rows: 3fr 3fr 2fr;
+    place-items: center;
+    margin-top: 100px;
+
+}
+
+.username, .password, .btn-login{
+    grid-column: 2;
+}
+.password{
+    grid-row: 2;
+}
+.btn-login{
+    grid-row: 3;
 }
 
 .plus-symbol{
@@ -137,6 +151,21 @@ ul li a:hover{
 
 .btn-modal-container{
     text-align: center;
+    margin: 90px 10px 0px;
+} 
+
+.btn-create-container{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.btn-create-container .btn{
+    width: 95%;
+}
+
+.card-container{
+    margin-top: 140px;
 }
 
 .requester-card{
@@ -319,10 +348,9 @@ ul li a:hover{
 
 .personal-modal{
     background: var(--soft-white);
-    padding: 40px;
-    width: 600px;
-    height: 500px;
-    border-radius: 20px;
+    padding: 20px;
+    width: 100vw;
+    height: 100vh;
     display: grid;
 }
 
@@ -341,6 +369,7 @@ ul li a:hover{
     border-radius: 5px;
     padding: 18px;
     margin: 10px;
+    font-size: 16px;
 }
 
 /*----------------Media Queries--------------------*/
@@ -359,10 +388,9 @@ ul li a:hover{
         grid-area: 2/2/3/3;
     }
     .actions{
-        grid-row: 1;
-        grid-column: 2;
-        flex-direction: column;
-        margin: 0;
+        grid-column: 3;
+        align-items: end;
+        justify-content: flex-end;
     }
     .edit-icon, .delete-icon {
         margin: 10px 8px;
@@ -390,6 +418,12 @@ ul li a:hover{
 }  
 
 @media (min-width: 767px) {
+
+    .personal-modal{
+        width: 70vw;
+        height: 100vh;
+        border-radius: 10px;
+    }
  
     .requester-card{
         width: 410px;
@@ -398,6 +432,10 @@ ul li a:hover{
         height: 220px;
         margin: 40px auto;
    }
+
+   .card-container{
+        margin-top: 100px;
+    }
 
    .requester-card img {
         position: initial;
@@ -465,12 +503,25 @@ ul li a:hover{
     .hamburguer {
         display: none;
     }
+
+    .personal-modal{
+        width: 50vw;
+        height: 95vh;
+    }
+
+    .btn-create-container{
+        flex-direction: row;
+        justify-content: center;
+    }
+    .btn-create-container .btn{
+        width: 210px;
+    }
     .card-container{
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 40px;
         width: 65%;
-        margin: 40px auto;
+        margin: 120px auto;
     }
     .requester-card{
         width: 380px;
@@ -499,6 +550,7 @@ ul li a:hover{
     .nav-items{
         grid-column: 2;
         grid-row: 1;
+        pointer-events: auto;
     }
 
     .nav-items ul{
@@ -507,7 +559,7 @@ ul li a:hover{
 
     .nav-items ul li a{
         color: var(--soft-white);
-        pointer-events: auto;
+        display: block;
     }
 
     .nav-items ul li a:hover {
@@ -524,10 +576,7 @@ ul li a:hover{
     .admin a{
         color: var(--soft-white);
         pointer-events: auto;
+        display: block;
     }
-
-    /* .admin a:hover{
-        t
-    } */
 
 }

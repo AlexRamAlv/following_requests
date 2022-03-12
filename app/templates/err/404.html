@@ -3,7 +3,9 @@
 {% block title %}Not Found{% endblock %}
 
 {% block page_content %}
-<div class="page-header">
-    <h1>Page not found</h1>
+<div style="padding: 20px; text-align: center;" class="page-header">
+    <h1 style="color: gray; font-size: 35px;">URL no encontrada</h1>
+    <br>
+    <p style="color: gray;">Para volver a la página de incio haz click <a href="{{url_for('main.show_requesters')}}">aquí</a></p>
 </div>
 {% endblock %}
